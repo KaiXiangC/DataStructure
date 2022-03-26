@@ -106,12 +106,12 @@ void print(){
 	int asc=num[0]-64;
 
 
-		for(int i=0;i<MAX;i++){//¤£²z«Y¼Æ¬°0ªº¶µ
-			if(poly[asc].order[i]==1){//¤@¦¸¤è
+		for(int i=0;i<MAX;i++){//ä¸ç†ä¿‚æ•¸ç‚º0çš„é …
+			if(poly[asc].order[i]==1){//ä¸€æ¬¡æ–¹
 				if(poly[asc].coefficient[i]==1){
-					if(i==0)//²Ä1¶µ
+					if(i==0)//ç¬¬1é …
 					printf("x");
-					else    //¤£¬O²Ä1¶µ,x«e­±­n¥[+¸¹
+					else    //ä¸æ˜¯ç¬¬1é …,xå‰é¢è¦åŠ +è™Ÿ
 					printf("+x");
 				}
 				else if(poly[asc].coefficient[i]==-1){
@@ -120,11 +120,11 @@ void print(){
 				else if(poly[asc].coefficient[i]!=0){
 					if(i==0 || poly[asc].coefficient[i]<0)
 					printf("%.1fx",poly[asc].coefficient[i]);
-					else      //¤£¬O²Ä1¶µ,x«e­±­n¥[+¸¹
+					else      //ä¸æ˜¯ç¬¬1é …,xå‰é¢è¦åŠ +è™Ÿ
 					printf("+%.1fx",poly[asc].coefficient[i]);
 				}
 			}
-			else if(poly[asc].order[i]==0){//¹s¦¸¤è(±`¼Æ¶µ)
+			else if(poly[asc].order[i]==0){//é›¶æ¬¡æ–¹(å¸¸æ•¸é …)
 				if(poly[asc].coefficient[i]==1){
 					if(i==0)
 					printf("1");
@@ -141,7 +141,7 @@ void print(){
 					printf("+%.1f",poly[asc].coefficient[i]);
 				}
 			}	
-			else{//(x¤j©ó¤@¦¸¤è)©Î(x¬°µ¥©ó¤p©ó-1¦¸¤è)
+			else{//(xå¤§æ–¼ä¸€æ¬¡æ–¹)æˆ–(xç‚ºç­‰æ–¼å°æ–¼-1æ¬¡æ–¹)
 				if(poly[asc].coefficient[i]==1){
 					if(i==0)
 					printf("x^%d",poly[asc].order[i]);
@@ -154,7 +154,7 @@ void print(){
 				else if(poly[asc].coefficient[i]!=0){
 					if(i==0 || poly[asc].coefficient[i]<0)
 					printf("%.1fx^%d",poly[asc].coefficient[i],poly[asc].order[i]);
-					else     //¤£¬O²Ä1¶µ,x«e­±¥[+¸¹
+					else     //ä¸æ˜¯ç¬¬1é …,xå‰é¢åŠ +è™Ÿ
 					printf("+%.1fx^%d",poly[asc].coefficient[i],poly[asc].order[i]);
 				}
 			}
@@ -172,25 +172,25 @@ void separate(int n,char poly_temp[])
 			term[i-j]='\0';
             exist_x=0; 
 			for(k=0;k<=(i-j-1);k++){
-				if(term[k]=='x'){//«D±`¼Æ¶µ
+				if(term[k]=='x'){//éžå¸¸æ•¸é …
 					exist_x=1;
-					if((term[k-1]=='+')||(k==0)){//x«e¤@­Ó¦r¤¸¬O+,«h«Y¼Æ¬°1
+					if((term[k-1]=='+')||(k==0)){//xå‰ä¸€å€‹å­—å…ƒæ˜¯+,å‰‡ä¿‚æ•¸ç‚º1
 						poly[n].coefficient[c]=1;
 						c++;
 					}
 				
-				    if(term[k-1]=='-'){//x«e¤@­Ó¦r¤¸¬O-,«h«Y¼Æ¬°-1
+				    if(term[k-1]=='-'){//xå‰ä¸€å€‹å­—å…ƒæ˜¯-,å‰‡ä¿‚æ•¸ç‚º-1
 						poly[n].coefficient[c]=-1;
 						c++;
 					}
 					
-				    if(term[k+1]=='^'){//x^«á­±ªº¼Æ¦rªí¦¸¤è
-						strncpy(temp,&term[k+2],strlen(term)-k-2); //x^«á­±ªº¼Æ¦r½Æ»s¨ìtemp(¦r¦ê)
+				    if(term[k+1]=='^'){//x^å¾Œé¢çš„æ•¸å­—è¡¨æ¬¡æ–¹
+						strncpy(temp,&term[k+2],strlen(term)-k-2); //x^å¾Œé¢çš„æ•¸å­—è¤‡è£½åˆ°temp(å­—ä¸²)
 						temp[strlen(term)-k-2]='\0';
-						poly[n].order[e]=atoi(temp); //char«¬ºAÂà¦¨int«¬ºA
+						poly[n].order[e]=atoi(temp); //charåž‹æ…‹è½‰æˆintåž‹æ…‹
 						e++;					
 					}
-					if(term[k+1]!='^'){//x«á­±¤@­Ó¦r¤¸¤£¬O^,¦¸¤è¬°1
+					if(term[k+1]!='^'){//xå¾Œé¢ä¸€å€‹å­—å…ƒä¸æ˜¯^,æ¬¡æ–¹ç‚º1
 						poly[n].order[e]=1;
                    		e++;
                    	}
@@ -292,8 +292,8 @@ void order_answer(){
 	pol temp[0];
 
 	for(i=0;i<MAX;i++){
-		largest_index=i;//°²³]³Ì¤jªº­È¦b³Ì«e­±
-		for(j=i;j<MAX;j++){//¦pªG¦³§ä¨ì§ó¤jªº´N³Q¨ú¥N
+		largest_index=i;//å‡è¨­æœ€å¤§çš„å€¼åœ¨æœ€å‰é¢
+		for(j=i;j<MAX;j++){//å¦‚æžœæœ‰æ‰¾åˆ°æ›´å¤§çš„å°±è¢«å–ä»£
 			if(answer[0].order[j]>answer[0].order[largest_index]){		
 				largest_index=j;
 			}				
@@ -311,12 +311,12 @@ void order_answer(){
 
 void print_answer(){
 	int i;
-	for(i=0;i<MAX;i++){//¤£²z«Y¼Æ¬°0ªº¶µ
-		if(answer[0].order[i]==1){//¤@¦¸¤è
+	for(i=0;i<MAX;i++){//ä¸ç†ä¿‚æ•¸ç‚º0çš„é …
+		if(answer[0].order[i]==1){//ä¸€æ¬¡æ–¹
 			if(answer[0].coefficient[i]==1){
-				if(i==0)//²Ä1¶µ
+				if(i==0)//ç¬¬1é …
 				printf("x");
-				else    //¤£¬O²Ä1¶µ,x«e­±­n¥[+¸¹
+				else    //ä¸æ˜¯ç¬¬1é …,xå‰é¢è¦åŠ +è™Ÿ
 				printf("+x");
 			}
 			else if(answer[0].coefficient[i]==-1){
@@ -325,11 +325,11 @@ void print_answer(){
 			else if(answer[0].coefficient[i]!=0){
 				if(i==0 || answer[0].coefficient[i]<0) 
 				printf("%.1fx",answer[0].coefficient[i]);
-				else      //¤£¬O²Ä1¶µ,x«e­±­n¥[+¸¹
+				else      //ä¸æ˜¯ç¬¬1é …,xå‰é¢è¦åŠ +è™Ÿ
 				printf("+%.1fx",answer[0].coefficient[i]);
 			}
 		}
-		else if(answer[0].order[i]==0){//¹s¦¸¤è(±`¼Æ¶µ)
+		else if(answer[0].order[i]==0){//é›¶æ¬¡æ–¹(å¸¸æ•¸é …)
 			if(answer[0].coefficient[i]==1){
 				if(i==0)
 				printf("1");
@@ -346,7 +346,7 @@ void print_answer(){
 				printf("+%.1f",answer[0].coefficient[i]);
 			}
 		}	
-		else{//(x¤j©ó¤@¦¸¤è)©Î(x¬°µ¥©ó¤p©ó-1¦¸¤è)
+		else{//(xå¤§æ–¼ä¸€æ¬¡æ–¹)æˆ–(xç‚ºç­‰æ–¼å°æ–¼-1æ¬¡æ–¹)
 			if(answer[0].coefficient[i]==1){
 				if(i==0)
 				printf("x^%d",answer[0].order[i]);
@@ -359,7 +359,7 @@ void print_answer(){
 			else if(answer[0].coefficient[i]!=0){
 				if(i==0 || answer[0].coefficient[i]<0)
 				printf("%.1fx^%d",answer[0].coefficient[i],answer[0].order[i]);
-				else     //¤£¬O²Ä1¶µ,x«e­±¥[+¸¹
+				else     //ä¸æ˜¯ç¬¬1é …,xå‰é¢åŠ +è™Ÿ
 				printf("+%.1fx^%d",answer[0].coefficient[i],answer[0].order[i]);
 			}
 		}
