@@ -77,9 +77,9 @@ char * strrepl(char * src, char * dst, size_t dst_size,char * search,char * repl
 int main(void){
 	clock_t start, bend, send;
 	start = clock();
-    //ÀÉ®×Àx¦s¸ê°Tµ²ºcÅé 
+    //æª”æ¡ˆå„²å­˜è³‡è¨Šçµæ§‹é«” 
     struct _finddata_t fileinfo;
-    //Àx¦sÀÉ®×±±¨î¥N½X 
+    //å„²å­˜æª”æ¡ˆæ§åˆ¶ä»£ç¢¼ 
     long fHandle;
 	buy valb[999];
 	sell vals[999];
@@ -227,20 +227,20 @@ int main(void){
 			y++;	
 		}
     }while( _findnext(fHandle,&fileinfo)==0);
-    //Ãö³¬ÀÉ®× 
+    //é—œé–‰æª”æ¡ˆ 
     
     _findclose( fHandle );
 	qsort(valb, z, sizeof(struct bk), bcompare);
 	bend = clock();
 	qsort(vals, y, sizeof(struct sk), scompare);
 	send = clock();
-    printf("¦@%dµ§²Å¦X¶R¤J\n",z);
+    printf("å…±%dç­†ç¬¦åˆè²·å…¥\n",z);
     for(int j=0;j<z;j++){
     	
 		printf("%s %s %s %s %s %s %s %s\n",valb[j].nm,valb[j].amount,valb[j].f1,valb[j].f2,valb[j].m1,valb[j].m2,valb[j].mprice,valb[j].price);
 	}
     printf("----------------------------------------------\n");
-    printf("¦@%dµ§²Å¦X½æ¥X\n",y);
+    printf("å…±%dç­†ç¬¦åˆè³£å‡º\n",y);
     for(int j=0;j<y;j++){
 		printf("%s %s %s %s %s %s %s %s\n",vals[j].nm,vals[j].amount,vals[j].f1,vals[j].f2,vals[j].m1,vals[j].m2,vals[j].mprice,vals[j].price);
 	}
