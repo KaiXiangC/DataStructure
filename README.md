@@ -1,2 +1,2 @@
 # DataStructure
-use c program to write DataStructure
+use c language to implement DataStructure
